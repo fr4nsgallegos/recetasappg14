@@ -38,42 +38,46 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 32),
-          child: Column(
-            children: [
-              FormItemWidget(
-                controller: _titleController,
-                hint: "Ingresa el títuñp",
-                iconData: Icons.title,
-              ),
-              FormItemWidget(
-                controller: _preparationController,
-                hint: "Ingresa la preparación",
-                iconData: Icons.list,
-                maxLines: 3,
-              ),
-              FormItemWidget(
-                controller: _imageController,
-                hint: "Ingresa la url de la imagen",
-                iconData: Icons.image,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  RecetaModel recetaAux = RecetaModel(
-                    title: _titleController.text,
-                    preparation: _preparationController.text,
-                    urlImage: _imageController.text,
-                  );
-                  recetasList.add(recetaAux);
-
-                  setState(() {});
-                },
-                child: Text("Registrar receta"),
-              ),
-              SizedBox(height: 16),
-              ...recetasList.map((e) {
-                return RecetaCardWidget(e);
-              }).toList(),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                FormItemWidget(
+                  controller: _titleController,
+                  hint: "Ingresa el título",
+                  iconData: Icons.title,
+                ),
+                FormItemWidget(
+                  controller: _preparationController,
+                  hint: "Ingresa la preparación",
+                  iconData: Icons.list,
+                  maxLines: 3,
+                ),
+                FormItemWidget(
+                  controller: _imageController,
+                  hint: "Ingresa la url de la imagen",
+                  iconData: Icons.image,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    RecetaModel recetaAux = RecetaModel(
+                      title: _titleController.text,
+                      preparation: _preparationController.text,
+                      urlImage: _imageController.text,
+                    );
+                    recetasList.add(recetaAux);
+                    _titleController.clear();
+                    _preparationController.clear();
+                    _imageController.clear();
+                    setState(() {});
+                  },
+                  child: Text("Registrar receta"),
+                ),
+                SizedBox(height: 16),
+                ...recetasList.map((e) {
+                  return RecetaCardWidget(e);
+                }).toList(),
+              ],
+            ),
           ),
         ),
       ),

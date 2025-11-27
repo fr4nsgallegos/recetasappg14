@@ -9,6 +9,7 @@ class RecetaCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      margin: EdgeInsets.only(bottom: 16),
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.30),
