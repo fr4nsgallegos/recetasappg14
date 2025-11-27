@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 class TextformfieldPage extends StatelessWidget {
@@ -5,6 +6,20 @@ class TextformfieldPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+
+  void mostrarSnackBarArriba(BuildContext context) {
+    Flushbar(
+      flushbarPosition: FlushbarPosition.TOP, //para que aparezca arriba
+      title: "Error",
+      message: "Revisa el formulario",
+      duration: Duration(seconds: 3),
+      backgroundColor: Colors.redAccent,
+      margin: EdgeInsets.all(8),
+
+      borderRadius: BorderRadius.circular(25),
+      icon: Icon(Icons.error),
+    ).show(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +48,12 @@ class TextformfieldPage extends StatelessWidget {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingresa tu correo";
+                    } else if (value.length < 6) {
+                      return "El correo debe tener al menos 6 caracteres";
+                    } else if (!RegExp(
+                      '[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}',
+                    ).hasMatch(value)) {
+                      return "Ingresa un correo válido";
                     } else {
                       return null;
                     }
@@ -75,12 +96,14 @@ class TextformfieldPage extends StatelessWidget {
                         ),
                       );
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text("Revisa las alertas!"),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     content: Text("Revisa las alertas!"),
+                      //     backgroundColor: Colors.red,
+                      //   ),
+                      // );
+
+                      mostrarSnackBarArriba(context);
                     }
                   },
                   child: Text("Enviar formulario"),
