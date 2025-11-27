@@ -25,19 +25,21 @@ class ScrollPage extends StatelessWidget {
               // scrollDirection: Axis.horizontal, //Scroll horizontal, funciona con un child Row
               child: Column(
                 children: [
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
-                  _buildContainers("1"),
+                  ...List.generate(
+                    10,
+                    (index) => _buildContainers(index.toString()),
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ...List.generate(
+                          10,
+                          (index) => _buildContainers(index.toString()),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
