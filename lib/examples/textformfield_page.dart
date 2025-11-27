@@ -9,6 +9,7 @@ class TextformfieldPage extends StatelessWidget {
 
   void mostrarSnackBarArriba(BuildContext context) {
     Flushbar(
+      // flushbarPosition: FlushbarPosition.BOTTOM, //para que aparezca abajo
       flushbarPosition: FlushbarPosition.TOP, //para que aparezca arriba
       title: "Error",
       message: "Revisa el formulario",
