@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:recetasappg14/models/receta_model.dart';
 import 'package:recetasappg14/widgets/form_item_widget.dart';
+import 'package:recetasappg14/widgets/receta_card_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   TextEditingController _titleController = TextEditingController();
+
   TextEditingController _preparationController = TextEditingController();
+
   TextEditingController _imageController = TextEditingController();
+
+  RecetaModel recetaWafles = RecetaModel(
+    title: "Wafles",
+    preparation:
+        "Luego con un colador tamizamos la harina y el polvo de hornear. Luego los incluimos en la mezcla anterior y mezclamos hasta formar una pasta lisa y uniforme.Calentamos la waflera a la temperatura deseada y rociamos aceite en spray. Luego, colocamos la mezcla dentro y dejamoscocinar.Una vez listo, retirar el waffle, disponer sobre un plato y decorar con crema chantilly, frutillas, arándanos, hojas de menta y un generoso chorro de miel.",
+    urlImage:
+        "https://images.pexels.com/photos/789327/pexels-photo-789327.jpeg",
+  );
+
+  List<RecetaModel> recetasList = [];
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xff0C3248),
       appBar: AppBar(
@@ -36,6 +56,23 @@ class HomePage extends StatelessWidget {
                 hint: "Ingresa la url de la imagen",
                 iconData: Icons.image,
               ),
+              ElevatedButton(
+                onPressed: () {
+                  RecetaModel recetaAux = RecetaModel(
+                    title: _titleController.text,
+                    preparation: _preparationController.text,
+                    urlImage: _imageController.text,
+                  );
+                  recetasList.add(recetaAux);
+
+                  setState(() {});
+                },
+                child: Text("Registrar receta"),
+              ),
+              SizedBox(height: 16),
+              ...recetasList.map((e) {
+                return RecetaCardWidget(e);
+              }).toList(),
             ],
           ),
         ),
