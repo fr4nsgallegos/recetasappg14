@@ -20,15 +20,51 @@ class ScrollPage extends StatelessWidget {
       body: Column(
         children: [
           Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
           Expanded(
             child: SingleChildScrollView(
               // scrollDirection: Axis.horizontal, //Scroll horizontal, funciona con un child Row
               child: Column(
                 children: [
+                  _buildContainers("Hola"),
+                  _buildContainers("Hola"),
+                  _buildContainers("Hola"),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 200,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return Container(
+                          width: 15,
+                          height: 50,
+                          color: Colors.blueGrey,
+                        );
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return _buildContainers("$index LISTVIEW");
+                      },
+                    ),
+                  ),
+                  _buildContainers("Hola"),
+                  _buildContainers("Hola"),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      itemCount: 200,
+                      itemBuilder: (BuildContext context, int index) {
+                        return _buildContainers("${index.toString()} LISTVIEW");
+                      },
+                    ),
+                  ),
                   ...List.generate(
                     10,
-                    (index) => _buildContainers(index.toString()),
+                    (index) => _buildContainers("${index.toString()}"),
                   ),
+
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
