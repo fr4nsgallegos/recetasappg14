@@ -10,9 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController _titleController = TextEditingController();
-
   TextEditingController _preparationController = TextEditingController();
-
   TextEditingController _imageController = TextEditingController();
 
   RecetaModel recetaWafles = RecetaModel(
@@ -24,6 +22,12 @@ class _HomePageState extends State<HomePage> {
   );
 
   List<RecetaModel> recetasList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    recetasList.add(recetaWafles);
+  }
 
   @override
   Widget build(BuildContext context) {
