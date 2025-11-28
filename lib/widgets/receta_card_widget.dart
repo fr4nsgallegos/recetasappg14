@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetasappg14/models/receta_model.dart';
+import 'package:recetasappg14/pages/receta_page.dart';
 
 class RecetaCardWidget extends StatelessWidget {
   RecetaModel recetaModel;
@@ -8,43 +9,53 @@ class RecetaCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.only(bottom: 16),
-      padding: EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.30),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(25),
-            child: Image.network(
-              recetaModel.urlImage,
-              height: size.height / 4,
-              width: size.width * 0.8,
-              fit: BoxFit.cover,
-            ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecetaPage(receta: recetaModel),
           ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              recetaModel.title,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.30),
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(25),
+              child: Image.network(
+                recetaModel.urlImage,
+                height: size.height / 4,
+                width: size.width * 0.8,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-          Text(
-            recetaModel.preparation,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(color: Colors.white),
-          ),
-        ],
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                recetaModel.title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            Text(
+              recetaModel.preparation,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
       ),
     );
   }

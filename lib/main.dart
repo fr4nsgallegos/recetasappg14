@@ -8,5 +8,5 @@ import 'package:recetasappg14/examples/textformfield_page.dart';
 import 'package:recetasappg14/pages/home_page.dart';
 
 void main() {
-  runApp(MaterialApp(home: NavigatorPage(), debugShowCheckedModeBanner: false));
+  runApp(MaterialApp(home: HomePage(), debugShowCheckedModeBanner: false));
 }

@@ -15,7 +15,9 @@ class NavigatorPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetallePage()),
+                  MaterialPageRoute(
+                    builder: (context) => DetallePage(nombre: "Jhonny"),
+                  ),
                 );
               },
               child: Text("Ir a DETALLE"),
@@ -28,13 +30,31 @@ class NavigatorPage extends StatelessWidget {
 }
 
 class DetallePage extends StatelessWidget {
-  const DetallePage({super.key});
+  String nombre;
+  DetallePage({required this.nombre});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Detalle")),
-      body: Center(child: Text("Soy la página detalle")),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("Soy la página detalle"),
+            Text(
+              "El nombre es $nombre",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Volver"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
