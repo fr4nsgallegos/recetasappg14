@@ -43,6 +43,12 @@ class NavigatorWithapprouterPage extends StatelessWidget {
               },
               child: Text("Push a recetaPage con parámetro model"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                context.push('/home/dropdownPage');
+              },
+              child: Text("Navegar a dropdownpage"),
+            ),
           ],
         ),
       ),

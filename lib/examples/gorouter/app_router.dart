@@ -1,6 +1,7 @@
 // vamos a declarar TODAS nuestas rutas
 
 import 'package:go_router/go_router.dart';
+import 'package:recetasappg14/examples/dropdown_page.dart';
 import 'package:recetasappg14/examples/gorouter/navigator_withAppRouter_page.dart';
 import 'package:recetasappg14/examples/gorouter/product_page.dart';
 import 'package:recetasappg14/examples/scroll_page.dart';
@@ -12,7 +13,16 @@ import 'package:recetasappg14/pages/receta_page.dart';
 final GoRouter approuter = GoRouter(
   initialLocation: '/navigatorGoRouter',
   routes: [
-    GoRoute(path: '/home', builder: (context, state) => HomePage()),
+    GoRoute(
+      path: '/home',
+      builder: (context, state) => HomePage(),
+      routes: [
+        GoRoute(
+          path: '/dropdownPage',
+          builder: (context, state) => DropdownPage(),
+        ),
+      ],
+    ),
     GoRoute(
       path: '/textFormField',
       builder: (context, state) => TextformfieldPage(),
