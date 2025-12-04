@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recetasappg14/examples/sliver/sliver_fixed_extentlist_tab.dart';
 import 'package:recetasappg14/examples/sliver/sliver_listbuilder_tab.dart';
 import 'package:recetasappg14/examples/sliver/sliver_listdelegate_tab.dart';
+import 'package:recetasappg14/examples/sliver/sliver_persistent_header_tab.dart';
 import 'package:recetasappg14/examples/sliver/sliver_separated_tab.dart';
 
 // SLIVER
@@ -41,7 +42,7 @@ class SliverPage extends StatelessWidget {
             SliverListdelegateTab(),
             SliverSeparatedTab(),
             SliverFixedExtentlistTab(),
-            Text("data"),
+            SliverPersistentHeaderTab(),
           ],
         ),
       ),
