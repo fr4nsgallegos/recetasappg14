@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetasappg14/examples/sliver/sliver_listbuilder_tab.dart';
+import 'package:recetasappg14/examples/sliver/sliver_listdelegate_tab.dart';
 
 // SLIVER
 // Widget de bajo nivel optimizado para Scroll, dibuja por  partes o segmentes en vez de cargar toda la pantalla
@@ -35,7 +36,7 @@ class SliverPage extends StatelessWidget {
         body: TabBarView(
           children: [
             SliverListbuilderTab(),
-            Text("data"),
+            SliverListdelegateTab(),
             Text("data"),
             Text("data"),
             Text("data"),

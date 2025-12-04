@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Hace construccion perezcosa (lazy loading)
-// Equivalente a Listview.builder, perso en versión sliver
-// Crea items solo cuando aparecen en la pantalla
-// Ideal para listas largas (1000,50000 o + )
-// Ahorra memoria y mejora el rendimiento del App
-
 class SliverListbuilderTab extends StatelessWidget {
   int cantidad = 50;
 
@@ -25,23 +19,23 @@ class SliverListbuilderTab extends StatelessWidget {
         SliverPadding(
           padding: EdgeInsets.all(16),
           sliver: SliverList(
-            // builder: crea bajo demanda lo que se va a mostrar en pantalla - funcionamiento parecido al listview.builder para mejorar el rendimiento
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 print(index);
+                bool esPar = index % 2 == 0;
                 return Card(
+                  color: esPar ? Colors.blue[100] : Colors.green[100],
                   child: ListTile(
                     leading: CircleAvatar(child: Text("${index + 1}")),
-                    title: Text("Producto $index"),
-                    subtitle: Text("Contruyendo bajo demanda"),
-                    trailing: Icon(Icons.chevron_right),
+                    title: Text("Producto ${index * 10}"),
+                    subtitle: Text("Construyendo bajo demanda"),
+                    trailing: Icon(esPar ? Icons.star : Icons.circle),
                   ),
                 );
               },
-              childCount:
-                  cantidad, //por defecto suele ser null ya que construye una cantidad infinita de elementos
-              addRepaintBoundaries: true, //optimiza el repintado
-              addSemanticIndexes: true, //accesibilidad
+              childCount: cantidad,
+              addRepaintBoundaries: true,
+              addSemanticIndexes: true,
             ),
           ),
         ),
