@@ -37,7 +37,12 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Color(0xff0C3248),
         foregroundColor: Colors.white,
-        title: Text("App de recetas"),
+        title: Text(
+          "App de recetas",
+          style: TextStyle(
+            fontFamily: "Jaro", //se usa la fuenta local
+          ),
+        ),
       ),
       body: Center(
         child: Padding(
