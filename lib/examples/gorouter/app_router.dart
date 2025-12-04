@@ -2,6 +2,7 @@
 
 import 'package:go_router/go_router.dart';
 import 'package:recetasappg14/examples/dropdown_page.dart';
+import 'package:recetasappg14/examples/gorouter/login_page.dart';
 import 'package:recetasappg14/examples/gorouter/navigator_withAppRouter_page.dart';
 import 'package:recetasappg14/examples/gorouter/product_page.dart';
 import 'package:recetasappg14/examples/scroll_page.dart';
@@ -12,7 +13,15 @@ import 'package:recetasappg14/pages/receta_page.dart';
 
 final GoRouter approuter = GoRouter(
   initialLocation: '/navigatorGoRouter',
+  redirect: (context, state) {
+    final isLogeed = false;
+    if (!isLogeed && state.matchedLocation != '/login') {
+      return '/login';
+    }
+    return null;
+  },
   routes: [
+    GoRoute(path: '/login', builder: (context, state) => LoginPage()),
     GoRoute(
       path: '/home',
       builder: (context, state) => HomePage(),
