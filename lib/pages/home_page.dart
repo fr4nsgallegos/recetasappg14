@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xff0C3248),
@@ -57,6 +58,12 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
+                  ),
+                ),
+                Text(
+                  "Ejemplo con fuente desde texttheme",
+                  style: theme.textTheme.headlineLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 FormItemWidget(

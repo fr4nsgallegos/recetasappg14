@@ -45,8 +45,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // TRABAJANDO FUENTE GLOBAL CON GOOGLEFONTS
+      // theme: ThemeData(
+      //   textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+      // ),
       theme: ThemeData(
-        textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+        textTheme: TextTheme(
+          headlineLarge: GoogleFonts.oswald(color: Colors.cyan, fontSize: 35),
+          bodyMedium: GoogleFonts.roboto(),
+        ),
       ),
 
       // TRABAJANDO FUENTE GLOBAL CON ASSET LOCAL
