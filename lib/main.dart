@@ -35,7 +35,8 @@ import 'package:recetasappg14/pages/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  // runApp(MyApp());
+  runApp(NavigatorRoutesPage());
 }
 
 class MyApp extends StatelessWidget {
