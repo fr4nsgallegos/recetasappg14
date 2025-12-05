@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recetasappg14/models/receta_model.dart';
 import 'package:recetasappg14/widgets/form_item_widget.dart';
 import 'package:recetasappg14/widgets/receta_card_widget.dart';
@@ -50,6 +51,14 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Text(
+                  "Hola este es un texto con estilo de Google Fonts",
+                  style: GoogleFonts.roboto(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
                 FormItemWidget(
                   controller: _titleController,
                   hint: "Ingresa el título",
