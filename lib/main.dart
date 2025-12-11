@@ -8,6 +8,7 @@ import 'package:recetasappg14/examples/scroll_page.dart';
 import 'package:recetasappg14/examples/sliver/sliver_page.dart';
 import 'package:recetasappg14/examples/textfield_page.dart';
 import 'package:recetasappg14/examples/textformfield_page.dart';
+import 'package:recetasappg14/pages/home_curved_navigation_bar.dart';
 import 'package:recetasappg14/pages/home_page.dart';
 
 // void main() {
@@ -35,8 +36,8 @@ import 'package:recetasappg14/pages/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // runApp(MyApp());
-  runApp(NavigatorRoutesPage());
+  runApp(MyApp());
+  // runApp(NavigatorRoutesPage());
 }
 
 class MyApp extends StatelessWidget {
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
       //     bodyMedium: TextStyle(fontSize: 16),
       //   ),
       // ),
-      home: HomePage(),
+      home: HomeCurvedNavigationBar(),
       debugShowCheckedModeBanner: false,
     );
   }
